@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+
+}
+
+/*
+Comfortaa|Hind|Kalam|Karla|Righteous
+*/
+
+
+.main_Todo {
+  border: 1px solid dodgerblue;
+  width: 800px;
+  height: 600px;
+  margin: 0 auto;
+  font-size: 62.5%;
+/*  font-family: Righteous;
+  font-family: Karla;
+  font-family: Kalam;
+  font-family: Hind; */
+  font-family: Comfortaa;
+
+}
+
+.title {
+  border: 1px solid deeppink;
+  display: flex;
+  justify-content: center;
+
+  width: 80%;
+  margin: 0 auto;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
+
+}
+
+
+.todoItem {
+
+
+
+}
+
+
+.todoform-container {
+
+
+
+}
+
+.todolist-container {
+
+
+
+}

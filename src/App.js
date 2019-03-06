@@ -45,7 +45,7 @@ class App extends React.Component {
   updateHandler = event => {
 
     console.log(
-      'target name & value in updated handler',
+      '******** target name & value in updated handler',
       event.target.name,
       event.target.value
     );
@@ -59,17 +59,23 @@ class App extends React.Component {
 
 
   // slice & push & add to state OR Dan's way
-  // try Dan' way
-  formSubmitHandler = () => {
-    const todo = {
-      task: '',
+  // trying my way first
+  addTodoHandler = () => {
+    const moreTodos = this.state.allTodos.slice();
+    moreTodos.push({
+      task: this.state.new_todo,
       id: Date.now(),
       completed: false
-    }
-    
+    });
 
+    this.setState({
+      allTodos: moreTodos,
+      new_todo: ''
+
+    });
 
   };
+
 
 
   // need to filter on completed?
@@ -98,6 +104,7 @@ class App extends React.Component {
        <TodoForm
         value = {this.state.new_todo}
         updateHandler = {this.updateHandler}
+        addTodoHandler = {this.addTodoHandler}
        />
 
       </div>

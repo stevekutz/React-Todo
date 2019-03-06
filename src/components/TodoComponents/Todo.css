@@ -11,7 +11,7 @@ Comfortaa|Hind|Kalam|Karla|Righteous
 .main_Todo {
   border: 1px solid dodgerblue;
   width: 800px;
-  height: 600px;
+  height: 800px;
   margin: 0 auto;
   font-size: 62.5%;
 /*  font-family: Righteous;
@@ -57,6 +57,7 @@ Comfortaa|Hind|Kalam|Karla|Righteous
   display: flex;
   flex-direction: column;
   width: 90%;
+  height: 400px;
   justify-content: center;
   align-items: center;
 

@@ -5,7 +5,8 @@ import './components/TodoComponents/TodoList';
 import './components/TodoComponents/TodoForm';
 import './components/TodoComponents/Todo.css';
 import TodoHeader from "./components/TodoComponents/TodoHeader";
-import TodoList from "./components/TodoComponents/TodoList";
+import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 
 class App extends React.Component {
@@ -41,29 +42,38 @@ class App extends React.Component {
 
 }
   // event handlers here
-  updateHandler = ev => {
+  updateHandler = event => {
 
+    console.log(
+      'target name & value in updated handler',
+      event.target.name,
+      event.target.value
+    );
+
+    // use controlled component tpo manage events
+    this.setState({[event.target.name]: event.target.value} );
 
 
 
   };
 
 
-  // slice & push & add to state
-  addTodo = () => {
+  // slice & push & add to state OR Dan's way
+  // try Dan' way
+  formSubmitHandler = () => {
     const todo = {
       task: '',
       id: Date.now(),
       completed: false
     }
-
+    
 
 
   };
 
 
   // need to filter on completed?
-  clearTodo = ev => {
+  clearTodoHandler = ev => {
 
 
 
@@ -71,7 +81,7 @@ class App extends React.Component {
 
 
   // stretch FUN - add styling crossout
-  toggleTodo = id => {
+  toggleTodoHandler = id => {
 
   };
 
@@ -82,8 +92,13 @@ class App extends React.Component {
        <TodoHeader header_msg = "Tasks to complete"/>
        <TodoList
          className = ""
-         currentTodos = {this.state.allTodos}/>
-
+         motivation_msg = "Get on these !!"
+         currentTodos = {this.state.allTodos}
+       />
+       <TodoForm
+        value = {this.state.new_todo}
+        updateHandler = {this.updateHandler}
+       />
 
       </div>
     );

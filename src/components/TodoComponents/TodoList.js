@@ -9,11 +9,10 @@ import './Todo.css';
 const TodoList = (props) => {
   console.log('TodoList props ', props);
 
-
   return (
 
     <div className = "todolist-container">
-        <h4> Get on these !!</h4>
+        <h4> {props.motivation_msg}</h4>
 
       {props.currentTodos.map(todo => {
         return  (

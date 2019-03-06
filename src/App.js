@@ -61,21 +61,31 @@ class App extends React.Component {
   // slice & push & add to state OR Dan's way
   // trying my way first
   addTodoHandler = () => {
-    const moreTodos = this.state.allTodos.slice();
-    moreTodos.push({
-      task: this.state.new_todo,
-      id: Date.now(),
-      completed: false
-    });
 
-    this.setState({
-      allTodos: moreTodos,
-      new_todo: ''
+    if(this.state.new_todo === '' || this.duplicateTodo(this.state.allTodos)) {
+      this.setState({new_todo: ''});
+    } else {
+      const moreTodos = this.state.allTodos.slice();
+      moreTodos.push({
+        task: this.state.new_todo,
+        id: Date.now(),
+        completed: false
+      });
 
-    });
-
+      this.setState({
+        allTodos: moreTodos,
+        new_todo: ''
+      });
+    }
   };
 
+
+  duplicateTodo(allTodos) {
+    for(let i = 0; i < allTodos.length; i++) {
+      if (allTodos[i].task === this.state.new_todo) return true
+    }
+    return false;
+  }
 
 
   // need to filter on completed?

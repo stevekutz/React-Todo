@@ -47,7 +47,13 @@ Comfortaa|Hind|Kalam|Karla|Righteous
 
 
 .todoform-container {
-
+  border: 1px solid deeppink;
+  width: 50%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
 
 }

@@ -12,10 +12,7 @@ const Todo = (props) => {
 
     <div className = "todoItem">
 
-
-
-
-
+      {props.todo.task}
     </div>
 
 

@@ -2,7 +2,7 @@
 // feel free to change this component.js into TodoList.js
 
 import React from 'react';
-import './Todo';
+import Todo from './Todo';
 import './Todo.css';
 
 
@@ -13,10 +13,18 @@ const TodoList = (props) => {
   return (
 
     <div className = "todolist-container">
+        <h4> Get on these !!</h4>
 
-
-
-
+      {props.currentTodos.map(todo => {
+        return  (
+          <Todo
+            className = "todoItem"
+            todo = {todo}
+            key = {todo.id}
+            compeleted = {todo.completed}
+          />
+        );
+      })}
 
     </div>
 

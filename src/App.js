@@ -1,7 +1,11 @@
 import React from 'react';
+
+import './components/TodoComponents/TodoHeader';
 import './components/TodoComponents/TodoList';
 import './components/TodoComponents/TodoForm';
 import './components/TodoComponents/Todo.css';
+import TodoHeader from "./components/TodoComponents/TodoHeader";
+import TodoList from "./components/TodoComponents/TodoList";
 
 
 class App extends React.Component {
@@ -12,7 +16,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      myTodos: [
+      allTodos: [
         {
           task: 'Organize Garage',
           id: 1528817077286,
@@ -24,7 +28,8 @@ class App extends React.Component {
           completed: false
         }
       ],
-      count: 0,
+      new_todo: '',
+      render_count: 0,
 
 
 
@@ -74,7 +79,12 @@ class App extends React.Component {
   render() {
     return (
       <div className = "main_Todo ">
-        <h2 className = "title"> Tasks to complete </h2>
+       <TodoHeader header_msg = "Tasks to complete"/>
+       <TodoList
+         className = ""
+         currentTodos = {this.state.allTodos}/>
+
+
       </div>
     );
   }

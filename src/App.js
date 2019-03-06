@@ -87,7 +87,10 @@ class App extends React.Component {
     return false;
   }
 
+  clearAllHandler = () => {
+    this.setState({allTodos: [] })
 
+  };
 
 
   // stretch FUN - add styling crossout
@@ -126,7 +129,7 @@ class App extends React.Component {
         updateHandler = {this.updateHandler}
         addTodoHandler = {this.addTodoHandler}
         clearTodoHandler = {this.clearTodoHandler}
-
+        clearAllHandler = {this.clearAllHandler}
        />
 
       </div>

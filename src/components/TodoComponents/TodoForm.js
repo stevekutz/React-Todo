@@ -24,7 +24,7 @@ const TodoForm = (props) => {
         <button onClick = {props.addTodoHandler}> Add </button>
 
 
-        <button> Clear All Todos </button>
+        <button onClick = {props.clearAllHandler}> Clear All Todos </button>
 
         <button onClick = {props.clearTodoHandler}> Removed selected Todos </button>
 

@@ -20,7 +20,8 @@ const TodoList = (props) => {
             className = "todoItem"
             todo = {todo}
             key = {todo.id}
-            compeleted = {todo.completed}
+            completed = {todo.completed}
+            toggleRemoveTodoHandler = {props.toggleRemoveTodoHandler}
           />
         );
       })}

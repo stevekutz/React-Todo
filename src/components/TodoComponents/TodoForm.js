@@ -9,6 +9,7 @@ const TodoForm = (props) => {
 
 
       <input
+          className= 'inputField'
           type = 'text'
           name ='new_todo'
           placeholder = 'add something here'
@@ -17,12 +18,21 @@ const TodoForm = (props) => {
 
         />  {props.new_todo}
 
+
+
+      <div className = 'button_controls'>
         <button onClick = {props.addTodoHandler}> Add </button>
 
 
         <button> Clear All Todos </button>
 
-        <button> Removed selected Todos </button>
+        <button onClick = {props.clearTodoHandler}> Removed selected Todos </button>
+
+
+
+
+      </div>
+
 
 
     </div>

@@ -88,18 +88,27 @@ class App extends React.Component {
   }
 
 
-  // need to filter on completed?
-  clearTodoHandler = ev => {
-
-
-
-  };
 
 
   // stretch FUN - add styling crossout
-  toggleTodoHandler = id => {
-
+  toggleRemoveTodoHandler = id => {
+    let todosToggled = this.state.allTodos.slice();
+    todosToggled = todosToggled.map(todo => {
+      if(todo.id === id) todo.completed = !todo.completed;
+        return todo;
+    });
+    this.setState({allTodos: todosToggled});
   };
+
+  // need to filter on completed?
+  clearTodoHandler = ev => {
+    let todosFiltered = this.state.allTodos.slice();
+    todosFiltered = todosFiltered.filter(todo => !todo.completed);
+
+    this.setState({ allTodos: todosFiltered });
+  };
+
+
 
 
   render() {
@@ -110,11 +119,14 @@ class App extends React.Component {
          className = ""
          motivation_msg = "Get on these !!"
          currentTodos = {this.state.allTodos}
+         toggleRemoveTodoHandler = {this.toggleRemoveTodoHandler}
        />
        <TodoForm
         value = {this.state.new_todo}
         updateHandler = {this.updateHandler}
         addTodoHandler = {this.addTodoHandler}
+        clearTodoHandler = {this.clearTodoHandler}
+
        />
 
       </div>

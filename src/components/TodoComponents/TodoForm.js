@@ -6,14 +6,16 @@ const TodoForm = (props) => {
 
   return (
     <div className = "todoform-container">
-        <input
+
+
+      <input
           type = 'text'
           name ='new_todo'
           placeholder = 'add something here'
-          value = {props.new_todo}
+          value = {props.value}
           onChange = {props.updateHandler}
 
-        />
+        />  {props.new_todo}
 
         <button onClick = {props.addTodoHandler}> Add </button>
 

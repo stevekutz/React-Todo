@@ -12,6 +12,7 @@ const TodoList = (props) => {
   return (
 
     <div className = "todolist-container"
+         onLoad = {props.motivation_msg_handler}
         >
         <h4
           onChange = {props.motivation_msg_handler}

@@ -56,14 +56,12 @@ class App extends React.Component {
     // use controlled component to manage events
     this.setState({[event.target.name]: event.target.value} );
 
-
-
   };
 
 
   // slice & push & add to state OR Dan's way
   // trying my way first
-  addTodoHandler = () => {
+  addTodoHandler = async () => {
 
     if(this.state.new_todo === '' || this.duplicateTodoCheck(this.state.allTodos)) {
       this.setState({new_todo: ''});
@@ -75,16 +73,20 @@ class App extends React.Component {
         completed: false
       });
 
-      this.setState({
+      await this.setState({
         allTodos: moreTodos,
         new_todo: ''
       });
     }
+
+    this.motivation_msg_handler();
   };
 
   motivation_msg_handler = () => {
-    (this.state.allTodos.length)
-      ? this.setState({motivation_msg: 'Get on these !!'})
+    const currentTodos = this.state.allTodos;
+
+    (currentTodos.length)
+      ? (this.setState(({motivation_msg: 'Get on these !!'})) )
       : this.setState({motivation_msg: 'find something to do'});
   };
 
@@ -95,8 +97,9 @@ class App extends React.Component {
     return false;
   }
 
-  clearAllHandler = () => {
-    this.setState({
+
+  clearAllHandler = async () => {
+    await this.setState({
       allTodos: []
     });
     this.motivation_msg_handler();
@@ -114,21 +117,18 @@ class App extends React.Component {
   };
 
   // need to filter on completed?
-  clearTodoHandler = () => {
+  clearTodoHandler = async () => {
     let todosFiltered = this.state.allTodos.slice();
     todosFiltered = todosFiltered.filter(todo => !todo.completed);
 
-    this.setState({
+    await this.setState({
       allTodos: todosFiltered
 
     });
     this.motivation_msg_handler();
   };
 
-
-
-
-
+  
   render() {
     return (
       <div className = "main_Todo ">

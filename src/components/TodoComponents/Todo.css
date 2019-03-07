@@ -108,7 +108,8 @@ button {
   font-weight: bold;
   font-family: Hind;
   background-color: cornflowerblue;
-}::hover {
-   background-color: darkslategray;
+}
 
- }
+button:hover {
+  background-color: darkslategray;
+}

@@ -17,7 +17,7 @@ const Todo = (props) => {
               : null
           }
           onClick = {() => props.toggleRemoveTodoHandler(props.todo.id)}
-
+          onChange = {() => props.motivation_msg_handler}
     >
 
       {props.todo.task}

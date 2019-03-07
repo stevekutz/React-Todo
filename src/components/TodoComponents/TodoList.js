@@ -11,8 +11,11 @@ const TodoList = (props) => {
 
   return (
 
-    <div className = "todolist-container">
-        <h4> {props.motivation_msg}</h4>
+    <div className = "todolist-container"
+        >
+        <h4
+          onChange = {props.motivation_msg_handler}
+        > {props.motivation_msg}</h4>
 
       {props.currentTodos.map(todo => {
         return  (
@@ -22,6 +25,7 @@ const TodoList = (props) => {
             key = {todo.id}
             completed = {todo.completed}
             toggleRemoveTodoHandler = {props.toggleRemoveTodoHandler}
+            motivation_msg_handler = {props.motivation_msg_handler}
           />
         );
       })}

@@ -4,6 +4,9 @@ import './Todo.css';
 const TodoForm = (props) => {
   console.log('TodoForm  ', props );
 
+  //    <button onClick = {props.addTodoHandler}> Add </button>
+
+
   return (
     <div className = "todoform-container">
 
@@ -24,7 +27,13 @@ const TodoForm = (props) => {
         <button onClick = {props.addTodoHandler}> Add </button>
 
 
-        <button onClick = {props.clearAllHandler}> Clear All Todos </button>
+
+
+        <button onClick = { props.clearAllHandler}
+
+
+
+        > Clear All Todos </button>
 
         <button onClick = {props.clearTodoHandler}> Removed selected Todos </button>
 

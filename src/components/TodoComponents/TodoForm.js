@@ -19,29 +19,31 @@ const TodoForm = (props) => {
           value = {props.value}
           onChange = {props.updateHandler}
 
-        />  {props.new_todo}
+        />
 
 
 
       <div className = 'button_controls'>
         <button onClick = {props.addTodoHandler}> Add </button>
-
-
-
-
-        <button onClick = { props.clearAllHandler}
-
-
-
-        > Clear All Todos </button>
-
+        <button onClick = { props.clearAllHandler} > Clear All Todos </button>
         <button onClick = {props.clearTodoHandler}> Removed selected Todos </button>
-
-
-
-
       </div>
 
+      <div className = 'search_controls'>
+        <h3 className = 'search_h3'> Search item</h3>
+
+        <input
+          className = 'searchField'
+          type = 'text'
+          name = 'search_term'
+          placeholder = 'enter search term here'
+          value2 = {props.value}
+          onChange={props.updateHandler}
+
+
+        />
+
+      </div>
 
 
     </div>

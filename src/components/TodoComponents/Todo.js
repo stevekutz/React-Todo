@@ -3,10 +3,10 @@ import './Todo.css';
 
 
 const Todo = (props) => {
-  console.log('Todo props ', props);
+ // console.log('Todo props ', props);
 
 //     onClick = {props.toggleRemoveTodoHandler(props.todo.id)}
-  console.log("______TOGGLE LINE________", props.todo);
+ // console.log("______TOGGLE LINE________", props.todo);
 
   return (
 
@@ -17,7 +17,6 @@ const Todo = (props) => {
               : null
           }
           onClick = {() => props.toggleRemoveTodoHandler(props.todo.id)}
-          onChange = {() => props.motivation_msg_handler}
     >
 
       {props.todo.task}

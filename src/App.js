@@ -35,6 +35,10 @@ class App extends React.Component {
       new_todo: '',
       render_count: 0,
       motivation_msg: 'Get on these !!',
+      search_term: '',
+
+
+
 
 
 
@@ -61,19 +65,21 @@ class App extends React.Component {
 
   // slice & push & add to state OR Dan's way
   // trying my way first
+
+/*    my way....
   addTodoHandler = async () => {
 
     if(this.state.new_todo === '' || this.duplicateTodoCheck(this.state.allTodos)) {
       this.setState({new_todo: ''});
     } else {
-      const moreTodos = this.state.allTodos.slice();
+      const moreTodos = this.state.allTodos.slice();    //   FROM HERE
       moreTodos.push({
         task: this.state.new_todo,
         id: Date.now(),
         completed: false
       });
 
-      await this.setState({
+      await this.setState({                   // seems less code, easier, yes?
         allTodos: moreTodos,
         new_todo: ''
       });
@@ -81,6 +87,42 @@ class App extends React.Component {
 
     this.motivation_msg_handler();
   };
+*/
+
+// Dan's method
+  addTodoHandler = async () => {
+    if(this.state.new_todo === '' || this.duplicateTodoCheck(this.state.allTodos)) {
+      this.setState({new_todo: ''});
+    } else {
+       let addedTodo = {                        // FROM HERE
+        task: this.state.new_todo,
+        id: Date.now(),
+        completed: false
+        };
+
+      await this.setState( prevState => {         // what does this do better?
+        return {
+          allTodos: [...prevState.allTodos, addedTodo],
+          new_todo: ''
+        }
+      })
+    }
+    this.motivation_msg_handler();
+
+  };
+
+
+  searchHandler = () => {
+    const searchTodos = this.state.allTodos.slice();
+
+
+
+
+
+  };
+
+
+
 
   motivation_msg_handler = () => {
     const currentTodos = this.state.allTodos;
@@ -97,16 +139,31 @@ class App extends React.Component {
     return false;
   }
 
-
+/*  my way
   clearAllHandler = async () => {
     await this.setState({
       allTodos: []
     });
     this.motivation_msg_handler();
   };
+*/
 
+// safer way
+  clearAllHandler = async () => {
+    await this.setState(prevState => {
+      return {
+        allTodos: [],
+        new_todo: ''
+      }
+
+    });
+
+    this.motivation_msg_handler();
+  };
 
   // stretch FUN - add styling crossout
+  //
+/*  my way
   toggleRemoveTodoHandler = id => {
     let todosToggled = this.state.allTodos.slice();
     todosToggled = todosToggled.map(todo => {
@@ -115,7 +172,29 @@ class App extends React.Component {
     });
     this.setState({allTodos: todosToggled});
   };
+*/
 
+// safer way
+  toggleRemoveTodoHandler = itemId => {
+    this.setState(prevState => {
+      return {
+        allTodos: prevState.allTodos.map(todoItem => {
+          if (todoItem.id === itemId) {
+            return {
+              task: todoItem.task,
+              id: todoItem.id,
+              completed: !todoItem.completed
+            };
+          } else {
+            return todoItem;
+          }
+        })
+      };
+    });
+  };
+
+
+/*
   // need to filter on completed?
   clearTodoHandler = async () => {
     let todosFiltered = this.state.allTodos.slice();
@@ -127,8 +206,26 @@ class App extends React.Component {
     });
     this.motivation_msg_handler();
   };
+*/
+// safer way
+  clearTodoHandler = async () => {
+    await this.setState(prevState => {
+      return {
+        allTodos: prevState.allTodos.filter (todoItem => {
+            return !todoItem.completed;
+        })
+      }
+    });
 
-  
+
+    this.motivation_msg_handler();
+  };
+
+
+
+
+// value = {this.state.new_todo}
+
   render() {
     return (
       <div className = "main_Todo ">
@@ -142,6 +239,7 @@ class App extends React.Component {
        />
        <TodoForm
         value = {this.state.new_todo}
+        value2 = {this.state.search_term}
         updateHandler = {this.updateHandler}
         addTodoHandler = {this.addTodoHandler}
         clearTodoHandler = {this.clearTodoHandler}

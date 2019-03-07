@@ -99,6 +99,30 @@ Comfortaa|Hind|Kalam|Karla|Righteous
   justify-content: space-evenly;
 }
 
+.search_controls {
+  border: 1px solid darkgreen;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+
+}
+
+.searchField_h3 {
+  border: 5px solid darkgoldenrod;
+
+}
+
+
+.searchField {
+  border: 1px solid slateblue;
+  display: flex;
+
+
+
+}
+
+
+
 button {
   font-size: 1.25rem;
   padding: .75rem;

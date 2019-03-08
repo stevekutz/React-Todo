@@ -13,8 +13,8 @@ const TodoList = (props) => {
     <div className = "todolist-container">
       <div className = "todolist-header">
         <img src = {props.src} alt = 'img_prop'/>
-        <h4> {props.motivation_msg} </h4>
-        <h4>  render called {props.count} times </h4>
+        <h4 className = "motivation_h4"> {props.motivation_msg} </h4>
+        <h4 className = "counter_h4">  now at {props.count} </h4>
 
       </div>
 

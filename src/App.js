@@ -235,31 +235,14 @@ class App extends React.Component {
 
     this.setState(prevState => {
        return {
-         allTodos: prevState.allTodos.map(todoItem =>{
-           if(todoItem.task === deleteItem){
-             console.log('********** returned ');
-             return {
-               task: todoItem.task,
-               id: todoItem.id,
-               completed: !todoItem.completed
-             }
-           } else {
-             console.log('NOTHING returned ');
-             return todoItem;
-
-           }
-         })
-
+        allTodos: prevState.allTodos.filter(item => item.task !== deleteItem),
+        new_todo: ''
        }
 
     });
 
-    this.clearTodoHandler();
     this.motivation_msg_handler()
   };
-
-
-
 
  incrementHandler = () => {
    this.setState(prevState => {

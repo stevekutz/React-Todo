@@ -40,7 +40,7 @@ Comfortaa|Hind|Kalam|Karla|Righteous
   display: flex;
   justify-content: flex-start;
   font-family: Kalam;
-  width: 95%;
+  width: 90%;
   font-size: 1.5rem;
   padding: 0 1rem;
 
@@ -49,12 +49,13 @@ Comfortaa|Hind|Kalam|Karla|Righteous
 
 .todoform-container {
   border: 1px solid deeppink;
-  width: 80%;
+  width: 90%;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 
 
 }
@@ -121,8 +122,13 @@ img{
   display: flex;
   border: 1px solid cornflowerblue;
   padding: 1rem;
-  width: 90%;
+  width: 100%;
   justify-content: space-evenly;
+}
+
+.button_controls button {
+  outline-style:none;
+
 }
 
 .search_controls {
@@ -130,8 +136,11 @@ img{
   display: flex;
   flex-direction: column;
   width: 85%;
+  justify-content: space-evenly;
 
 }
+
+
 
 .searchField_h3 {
   border: 5px solid darkgoldenrod;

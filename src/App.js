@@ -39,8 +39,8 @@ class App extends React.Component {
       motivation_msg: 'Get on these !!',
       search_term: '',
       count: 0,
-      src: productivity,
-
+  //    src: productivity,
+      src: require('./components/TodoComponents/img/productivity.jpg'),
 
 
 
@@ -130,11 +130,13 @@ class App extends React.Component {
     (currentTodos.length)
       ? (this.setState((
         { motivation_msg: 'Get on these !!',
-          src: productivity
+         // src: productivity
+          src: require('./components/TodoComponents/img/productivity.jpg')
         })) )
       : this.setState(
         {motivation_msg: 'find something to do',
-         src: lazy
+         // src: lazy
+         src: require('./components/TodoComponents/img/lazy.jpg')
         });
   };
 

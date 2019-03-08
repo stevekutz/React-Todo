@@ -4,7 +4,6 @@
 import React from 'react';
 import Todo from './Todo';
 import './Todo.css';
-import productivity from './img/productivity.jpg';
 
 const TodoList = (props) => {
   console.log('TodoList props ', props);

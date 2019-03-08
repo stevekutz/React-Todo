@@ -8,6 +8,7 @@ import TodoHeader from "./components/TodoComponents/TodoHeader";
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 import productivity from './components/TodoComponents/img/productivity.jpg';
+import lazy from './components/TodoComponents/img/lazy.jpg';
 
 // import moment from 'moment';
 //     {moment().format('DD MMM').toLowerCase()}
@@ -38,7 +39,7 @@ class App extends React.Component {
       motivation_msg: 'Get on these !!',
       search_term: '',
       count: 0,
-      src: {productivity},
+      src: productivity,
 
 
 
@@ -129,9 +130,12 @@ class App extends React.Component {
     (currentTodos.length)
       ? (this.setState((
         { motivation_msg: 'Get on these !!',
-          src: {productivity}
+          src: productivity
         })) )
-      : this.setState({motivation_msg: 'find something to do'});
+      : this.setState(
+        {motivation_msg: 'find something to do',
+         src: lazy
+        });
   };
 
   duplicateTodoCheck(allTodos) {

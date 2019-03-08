@@ -64,17 +64,30 @@ Comfortaa|Hind|Kalam|Karla|Righteous
   display: flex;
   flex-direction: column;
   width: 90%;
-  height: 60%;
+ /* height: 80%; */
   justify-content: center;
   align-items: center;
 
 }
 
-.todolist-container h4 {
+.todolist-header {
+  border: 1px solid lightseagreen;
+  display: flex;
+  width: 80%;
+
+}
+
+img{
+  width: 80px;
+  height: 80px;
+
+}
+
+.todolist-header h4 {
   border: 2px solid darkmagenta;
   display: flex;
   font-family: Righteous;
-  width: 50%;
+  width: 100%;
   justify-content: left;
   font-size: 2rem;
 

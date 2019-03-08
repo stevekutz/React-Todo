@@ -7,6 +7,7 @@ import './components/TodoComponents/Todo.css';
 import TodoHeader from "./components/TodoComponents/TodoHeader";
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
+import productivity from './components/TodoComponents/img/productivity.jpg';
 
 // import moment from 'moment';
 //     {moment().format('DD MMM').toLowerCase()}
@@ -36,8 +37,8 @@ class App extends React.Component {
       render_count: 0,
       motivation_msg: 'Get on these !!',
       search_term: '',
-
-
+      count: 0,
+      src: {productivity},
 
 
 
@@ -46,11 +47,10 @@ class App extends React.Component {
     }
 
 
-
 }
   // event handlers here
-  updateHandler = event => {
 
+  updateHandler = event => {
     console.log(
       '******** target name & value in updated handler',
       event.target.name,
@@ -100,11 +100,11 @@ class App extends React.Component {
         completed: false
         };
 
-      await this.setState( prevState => {         // what does this do better?
-        return {
-          allTodos: [...prevState.allTodos, addedTodo],
+      await this.setState( prevState => {       // what does this do better?
+      return {
+         allTodos: [...prevState.allTodos, addedTodo],
           new_todo: ''
-        }
+       }
       })
     }
     this.motivation_msg_handler();
@@ -117,8 +117,6 @@ class App extends React.Component {
 
 
 
-
-
   };
 
 
@@ -126,9 +124,13 @@ class App extends React.Component {
 
   motivation_msg_handler = () => {
     const currentTodos = this.state.allTodos;
+    this.incrementHandler();
 
     (currentTodos.length)
-      ? (this.setState(({motivation_msg: 'Get on these !!'})) )
+      ? (this.setState((
+        { motivation_msg: 'Get on these !!',
+          src: {productivity}
+        })) )
       : this.setState({motivation_msg: 'find something to do'});
   };
 
@@ -152,7 +154,7 @@ class App extends React.Component {
   clearAllHandler = async () => {
     await this.setState(prevState => {
       return {
-        allTodos: [],
+        allTodos: prevState.allTodos = [],   // used to be just allTodos: []
         new_todo: ''
       }
 
@@ -211,9 +213,7 @@ class App extends React.Component {
   clearTodoHandler = async () => {
     await this.setState(prevState => {
       return {
-        allTodos: prevState.allTodos.filter (todoItem => {
-            return !todoItem.completed;
-        })
+        allTodos: prevState.allTodos.filter (todoItem => !todoItem.completed)
       }
     });
 
@@ -221,8 +221,13 @@ class App extends React.Component {
     this.motivation_msg_handler();
   };
 
+ incrementHandler = () => {
+   this.setState(prevState => {
+     return {count: prevState.count + 1}
+   });
 
 
+ };
 
 // value = {this.state.new_todo}
 
@@ -233,9 +238,11 @@ class App extends React.Component {
        <TodoList
          className = ""
          motivation_msg = {this.state.motivation_msg}
+         src = {this.state.src}
          currentTodos = {this.state.allTodos}
          toggleRemoveTodoHandler = {this.toggleRemoveTodoHandler}
          motivation_msg_handler = {this.motivation_msg_handler}
+         count = {this.state.count}
        />
        <TodoForm
         value = {this.state.new_todo}

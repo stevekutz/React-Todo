@@ -22,7 +22,6 @@ const TodoForm = (props) => {
         />
 
 
-
       <div className = 'button_controls'>
         <button onClick = {props.addTodoHandler}> Add </button>
         <button onClick = { props.clearAllHandler} > Clear All Todos </button>

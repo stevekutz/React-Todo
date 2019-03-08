@@ -4,7 +4,7 @@
 import React from 'react';
 import Todo from './Todo';
 import './Todo.css';
-
+import productivity from './img/productivity.jpg';
 
 const TodoList = (props) => {
   console.log('TodoList props ', props);
@@ -12,7 +12,13 @@ const TodoList = (props) => {
   return (
 
     <div className = "todolist-container">
+      <div className = "todolist-header">
+        <img src = {props.src} alt = 'img_prop'/>
         <h4> {props.motivation_msg} </h4>
+        <h4>  render called {props.count} times </h4>
+
+      </div>
+
 
       {props.currentTodos.map(todo => {
         return  (
@@ -37,4 +43,4 @@ const TodoList = (props) => {
 
 };
 
-export default TodoList
+export default TodoList;

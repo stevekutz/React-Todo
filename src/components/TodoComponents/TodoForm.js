@@ -26,6 +26,7 @@ const TodoForm = (props) => {
         <button onClick = {props.addTodoHandler}> Add </button>
         <button onClick = { props.clearAllHandler} > Clear All Todos </button>
         <button onClick = {props.clearTodoHandler}> Removed selected Todos </button>
+        <button onClick = {props.deleteTodoHandler}> Delete a Todo </button>
       </div>
 
       <div className = 'search_controls'>

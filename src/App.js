@@ -34,6 +34,7 @@ class App extends React.Component {
           completed: false
         }
       ],
+      allFound: [],
       new_todo: '',
       render_count: 0,
       motivation_msg: 'Get on these !!',
@@ -114,12 +115,11 @@ class App extends React.Component {
 
 
   searchHandler = () => {
-    const searchTodos = this.state.allTodos.slice();
+
 
 
 
   };
-
 
 
 
@@ -227,6 +227,40 @@ class App extends React.Component {
     this.motivation_msg_handler();
   };
 
+
+  deleteTodoHandler = async () => {
+
+    const deleteItem = this.state.new_todo;
+    console.log('>>>>> deleteItem is ', deleteItem);
+
+    this.setState(prevState => {
+       return {
+         allTodos: prevState.allTodos.map(todoItem =>{
+           if(todoItem.task === deleteItem){
+             console.log('********** returned ');
+             return {
+               task: todoItem.task,
+               id: todoItem.id,
+               completed: !todoItem.completed
+             }
+           } else {
+             console.log('NOTHING returned ');
+             return todoItem;
+
+           }
+         })
+
+       }
+
+    });
+
+    this.clearTodoHandler();
+    this.motivation_msg_handler()
+  };
+
+
+
+
  incrementHandler = () => {
    this.setState(prevState => {
      return {count: prevState.count + 1}
@@ -257,6 +291,7 @@ class App extends React.Component {
         addTodoHandler = {this.addTodoHandler}
         clearTodoHandler = {this.clearTodoHandler}
         clearAllHandler = {this.clearAllHandler}
+        deleteTodoHandler = {this.deleteTodoHandler}
        />
 
       </div>
